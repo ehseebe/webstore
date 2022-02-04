@@ -1,0 +1,14 @@
+// Typography
+$base-font-family: "Outfit", Helvetica, Arial, sans-serif;
+
+$weight-regular: 400;
+$weight-bold: 600;
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $weight-bold;
+}
+
+p {
+  font-weight: $weight-regular;
+}

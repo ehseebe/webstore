@@ -1,0 +1,19 @@
+@import "01-base/colors";
+@import "01-base/typography";
+@import "01-base/shell";
+@import "01-base/breakpoints";
+@import "01-base/containers";
+
+@import "02-components/header";
+@import "02-components/search";
+
+.App {
+  background-color: $color-pink;
+
+  &__header {
+    background-color: $color-purple;
+    height: 10rem;
+  }
+}
+
+
