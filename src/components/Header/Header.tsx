@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import SearchInput from '../Search/SearchInput';
+
 
 // assets
 import logo from "../../assets/logo-heart.png";
@@ -10,7 +10,6 @@ import logo from "../../assets/logo-heart.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 
   return (
     <header className="header main-grid">
@@ -23,10 +22,9 @@ export default function Header() {
 
           <img className="logo" src={logo} alt="webstore logo"/>
 
-          <div className="togglers">
-            <SearchInput />
-            Cart icon
-          </div>
+          {/* <div className="togglers">
+
+          </div> */}
           </div>
         </nav>
     </header>

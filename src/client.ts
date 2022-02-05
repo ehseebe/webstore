@@ -1,5 +1,5 @@
 export interface Product {
-  amount: null;
+  amount: number;
   brand_subtype: string;
   brand: string;
   cannabinoids: any[];
@@ -8,7 +8,7 @@ export interface Product {
   dosage: string;
   effects: any[];
   flavors: any[];
-  image_urls: string[];
+  image_urls: string;
   ingredients: any[];
   kind_subtype: string;
   kind: string;
@@ -19,11 +19,14 @@ export interface Product {
   percent_thc: number;
   percent_thca: number;
   percent_tac: number;
+  photos: any[];
+  price_each: number;
   product_id: number;
   product_percent_cbd: number;
   product_percent_thc: number;
   review_count: number;
   root_subtype: string;
+  sort_price: number;
   terpenes: any[];
   type: string;
 }

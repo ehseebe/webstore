@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function SearchInput() {
-  // ! temporary, this state will be passed down from parent
-  const [searchQuery, setSearchQuery] = useState('');
+export default function SearchInput({searchQuery, setSearchQuery}) {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();

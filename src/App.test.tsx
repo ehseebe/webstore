@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { fetchProducts } from "../src/client";
 
 /**
  * We should test that following requirements are met.
@@ -26,6 +27,7 @@ test('renders logo', () => {
 describe('Component Testing', () => {
   test('Load list of products', async () => {
     render(<App />)
+
     const items = await screen.findAllByTestId(/product/)
     expect(items).toBeInTheDocument();
   });
