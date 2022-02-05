@@ -23,6 +23,20 @@ export const StyledButton = styled(IconButton)`
 `;
 
 export const SearchInputWrap = styled.div`
-position: absolute;
-top: 1.5rem;
-right: 10rem;`
+  position: absolute;
+  top: 1.5rem;
+  right: 10rem;
+`;
+
+export const GridMain = styled.div`
+  grid-column: content-start/content-end;
+`;
+
+export const GridWrap = styled.ul`
+  padding: 5rem 0 10rem;
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fill, minmax(27rem, 1fr));
+  gap: 2rem;
+  margin: 0;
+`;

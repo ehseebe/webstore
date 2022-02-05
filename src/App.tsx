@@ -9,13 +9,19 @@ import Item from "./components/Item/Item";
 import Drawer from "@material-ui/core/Drawer";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Badge from "@material-ui/core/Badge";
 import Cart from "./components/Cart/Cart";
 
 // styles
-import { Wrapper, StyledButton, SearchInputWrap } from "./App.styles";
+import {
+  Wrapper,
+  StyledButton,
+  SearchInputWrap,
+  GridMain,
+  GridWrap,
+} from "./App.styles";
 
 // types
 import { Product } from "./client";
@@ -42,19 +48,18 @@ const App = () => {
     let productList = products;
 
     if (searchQuery) {
-
       const keyword = searchQuery.toLowerCase();
 
       productList = products.filter((item) => {
-        return item.name.toLowerCase().includes(keyword) || item.description.toLowerCase().includes(keyword)
-      })
-
+        return (
+          item.name.toLowerCase().includes(keyword) ||
+          item.description.toLowerCase().includes(keyword)
+        );
+      });
     }
 
     return productList.map((item) => (
-      <Grid item key={item.product_id} xs={12} sm={3}>
-        <Item item={item} handleAddToCart={handleAddToCart} />
-      </Grid>
+      <Item item={item} handleAddToCart={handleAddToCart} />
     ));
   };
 
@@ -102,7 +107,7 @@ const App = () => {
   const visibleProducts = products && renderedProducts();
 
   return (
-    <main>
+    <main className="main-grid">
       <Header />
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
@@ -122,9 +127,9 @@ const App = () => {
           setSearchQuery={setSearchQuery}
         />
       </SearchInputWrap>
-      <Grid container spacing={3}>
-        {visibleProducts}
-      </Grid>
+      <GridMain>
+        <GridWrap>{visibleProducts}</GridWrap>
+      </GridMain>
     </main>
   );
 };

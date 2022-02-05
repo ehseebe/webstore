@@ -1,4 +1,4 @@
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 // types
 import { Product } from "../../client";
 // styles
@@ -11,13 +11,14 @@ type Props = {
 
 const Item: React.FC<Props> = ({item, handleAddToCart }) => (
     <Wrapper aria-label="product">
+        <div className="item__image">
         <img src={item.photos[0].urls.medium} alt={item.name}/>
-        <div>
-            <h3>{item.name}</h3>
-            <p>{item.description}</p>
-            <h3>${item.sort_price}</h3>
         </div>
-        <Button onClick={() => handleAddToCart(item)}>Add to Cart</Button>
+        <div className="item__details">
+            <h2 className="item__name">{item.name}</h2>
+            <h3 className="item__price">${item.sort_price}</h3>
+        </div>
+        <button className="item__button" onClick={() => handleAddToCart(item)}>Add to Cart</button>
     </Wrapper>
 )
 

@@ -1,0 +1,33 @@
+.item {
+  &__image {
+    height: 25rem;
+    width: 25rem;
+
+    img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__details {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  &__button {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    border-radius: 4rem;
+    background-color: $color-green;
+    color: $color-white;
+    border: none;
+    font-weight: $weight-bold;
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,17 @@
+.products {
+  padding: 5rem 10rem;
+  grid-column: full-start/full-end;
+
+
+  &__main {
+    grid-column: content-start/content-end;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(27rem, 1fr));
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+}

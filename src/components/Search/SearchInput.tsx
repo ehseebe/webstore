@@ -1,18 +1,6 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function SearchInput({searchQuery, setSearchQuery}) {
-
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-
-    if (searchQuery === '' || null) {
-      return null;
-    }
-
-    console.log('searching for', searchQuery);
-    // setSearchQuery('');
-  };
 
   return (
     <form className="search__input" aria-label="Keyword/text search">
@@ -26,16 +14,9 @@ export default function SearchInput({searchQuery, setSearchQuery}) {
           value={searchQuery}
         />
       </label>
-      <label htmlFor="search-submit">
-        <input
-          id="search-submit"
-          className="search__input__button"
-          onClick={handleSearchSubmit}
-          type="submit"
-          value=""
-          aria-label="Submit search query"
+        <span
+          className="search__input__icon"
         />
-      </label>
       {searchQuery.length > 0 && (
         <button
           className="search__input__clear"
