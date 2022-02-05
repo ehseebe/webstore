@@ -24,10 +24,57 @@
     margin: 0 auto;
     padding: 2rem 3rem;
     border-radius: 4rem;
-    background-color: $color-green;
+    background-color: $color-pink;
     color: $color-white;
     border: none;
     font-weight: $weight-bold;
     font-size: 2rem;
+    transition: all 500ms;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: $color-purple;
+      transform: translateY(-3px);
+      transition: all 250ms;
+      box-shadow: 0 1px 1px 0 rgba(59, 72, 77, 0.08), 0 1px 3px 1px rgba(59, 72, 77, 0.16);
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
+
+.cart-item {
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      max-width: 8rem;
+      object-fit: cover;
+      margin: 2rem;
+    }
+  }
+
+  &__information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+
+    > h4 {
+      padding: 1rem;
+    }
+
+    > button {
+      font-size: 1.8rem;
+    }
   }
 }

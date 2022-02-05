@@ -1,7 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {   render, screen,
+  cleanup,
+  waitFor,
+  fireEvent,
+  getByText,
+  queryByText,
+  getAllByTestId,
+  getByAltText,
+  getByPlaceholderText,
+  queryByAltText } from '@testing-library/react';
 import App from './App';
-import { fetchProducts } from "../src/client";
+import {fetchProducts} from "./client";
 
 /**
  * We should test that following requirements are met.
@@ -18,30 +27,20 @@ import { fetchProducts } from "../src/client";
  *
  */
 
-// test('renders logo', () => {
-//   render(<App />);
-//   const logoElement = screen.getByAltText(/webstore logo/i);
-//   expect(logoElement).toBeInTheDocument();
-// });
-
-// jest.mock("../src/client");
+ afterEach(cleanup);
 
 describe('Component Testing', () => {
   test('Load list of products', async () => {
-    render(<App />)
-
-    // expect(fetchProducts).toHaveBeenCalledTimes(1)
-
-    // const items = await screen.findAllByTestId(/product/)
-    // expect(items).toBeInTheDocument();
+    const fetchData = jest.fn(() => Promise.resolve());
+    const props = { fetchData };
   });
 
-  // test('User keyword search shows relevant products', async () => {
-  //   render(<App />)
-
-  //   // search input on change
-  //   // items with keyword are visible
-  // });
+  test('User keyword search shows relevant products', async () => {
+    const { getByDisplayValue } = render(<App />)
+    const input = getByDisplayValue('')
+    fireEvent.change(input, { target: { value: 'lemon' } })
+    getByDisplayValue('lemon')
+  });
 
   // test('Customer can add item to cart', async () => {
   //   render(<App />)

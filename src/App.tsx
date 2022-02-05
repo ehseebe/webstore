@@ -1,29 +1,22 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "react-query";
 import { fetchProducts } from "./client";
-
 //components
 import Header from "./components/Header/Header";
 import SearchInput from "./components/Search/SearchInput";
 import Item from "./components/Item/Item";
 import Drawer from "@material-ui/core/Drawer";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import CircularProgress from "@material-ui/core/CircularProgress";
 // import Grid from "@material-ui/core/Grid";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Badge from "@material-ui/core/Badge";
 import Cart from "./components/Cart/Cart";
-
 // styles
 import {
-  Wrapper,
   StyledButton,
   SearchInputWrap,
   GridMain,
   GridWrap,
 } from "./App.styles";
-
-// types
+// type
 import { Product } from "./client";
 
 const App = () => {
@@ -32,18 +25,19 @@ const App = () => {
   const [products, setProducts] = useState([] as Product[]);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // use existing fetch function to set product data
   const setProductData = () => {
     fetchProducts().then((res) => {
       setProducts(res);
     });
   };
 
+  // wrap in useEffect to render on load
   useEffect(() => {
     setProductData();
   }, []);
 
-  console.log("data", products);
-
+  // checks if search query exists & renders items with matching name or description
   const renderedProducts = () => {
     let productList = products;
 
@@ -65,11 +59,12 @@ const App = () => {
 
   const handleAddToCart = (clickedItem: Product) => {
     setCartItems((prev) => {
-      // 1. is the item already in the cart?
+      // checks if the item already in the cart
       const isItemInCart = prev.find(
         (item) => item.product_id === clickedItem.product_id
       );
 
+      // ! check that we don't go over max_amount
       if (isItemInCart) {
         return prev.map((item) =>
           item.product_id === clickedItem.product_id
@@ -77,8 +72,7 @@ const App = () => {
             : item
         );
       }
-
-      // 2. new cart item
+      // new cart item
       return [...prev, { ...clickedItem, amount: 1 }];
     });
   };
@@ -104,6 +98,7 @@ const App = () => {
   const getTotalItems = (items: Product[]) =>
     items.reduce((acc: number, item) => acc + item.amount, 0);
 
+    // checks if products exits & calls product render function
   const visibleProducts = products && renderedProducts();
 
   return (
@@ -127,7 +122,7 @@ const App = () => {
           setSearchQuery={setSearchQuery}
         />
       </SearchInputWrap>
-      <GridMain>
+      <GridMain id="page-content">
         <GridWrap>{visibleProducts}</GridWrap>
       </GridMain>
     </main>

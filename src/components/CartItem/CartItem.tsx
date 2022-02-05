@@ -13,24 +13,25 @@ type Props = {
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
     <Wrapper>
-        <div>
-            <h3>{item.name}</h3>
-        </div>
-        <div className="information">
-            <p>Price: ${item.sort_price}</p>
-            <p>Total: ${(item.amount * item.sort_price).toFixed(2)}</p>
+        <div className="cart-item__main">
 
-            <div className="buttons">
-                <Button size="small" disableElevation variant="contained" onClick={() => removeFromCart(item.product_id)}>
+            <h3>{item.name}</h3>
+        <img src={item.photos[0].urls.small} alt={item.name} />
+        </div>
+            {/* <p>Price: ${item.sort_price}</p> */}
+        <div className="cart-item__information">
+        <h4>Total: ${(item.amount * item.sort_price).toFixed(2)}</h4>
+            <div className="cart-item__buttons">
+                <Button aria-label="remove one item" type="button" size="small" disableElevation variant="contained" onClick={() => removeFromCart(item.product_id)}>
                     -
                 </Button>
-                <p>{item.amount}</p>
-                <Button size="small" disableElevation variant="contained" onClick={() => addToCart(item)}>
+                <h4>{item.amount}</h4>
+                <Button aria-label="add one item" type="button" size="small" disableElevation variant="contained" onClick={() => addToCart(item)}>
                     +
                 </Button>
             </div>
+
         </div>
-        <img src={item.photos[0].urls.small} alt={item.name} />
     </Wrapper>
 )
 
