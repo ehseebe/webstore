@@ -52,8 +52,9 @@ const App = () => {
       });
     }
 
+    console.log("products", productList);
     return productList.map((item) => (
-      <Item item={item} handleAddToCart={handleAddToCart} />
+      <Item item={item} handleAddToCart={handleAddToCart} key={item.product_id}/>
     ));
   };
 
@@ -102,7 +103,7 @@ const App = () => {
   const visibleProducts = products && renderedProducts();
 
   return (
-    <main className="main-grid">
+    <main className="main-grid" id="main">
       <Header />
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
@@ -123,7 +124,7 @@ const App = () => {
         />
       </SearchInputWrap>
       <GridMain id="page-content">
-        <h2 id="list-title">Products</h2>
+        <h1 id="list-title">Browse Products</h1>
         <GridWrap aria-labelledby="list-title">{visibleProducts}</GridWrap>
       </GridMain>
     </main>

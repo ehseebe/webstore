@@ -26,10 +26,14 @@ export const SearchInputWrap = styled.div`
 
 export const GridMain = styled.div`
   grid-column: content-start/content-end;
+
+  > h1 {
+    padding-top: 3rem;
+  }
 `;
 
 export const GridWrap = styled.ul`
-  padding: 5rem 0 10rem;
+  padding: 3rem 0 10rem;
   display: grid;
   align-items: stretch;
   grid-template-columns: repeat(auto-fill, minmax(27rem, 1fr));
