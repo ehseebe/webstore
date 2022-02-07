@@ -10,7 +10,7 @@ type Props = {
 }
 
 const Item: React.FC<Props> = ({item, handleAddToCart }) => (
-    <Wrapper aria-label="product">
+    <Wrapper aria-label="product" role="product">
         <div className="item__image">
         <img src={item.photos[0].urls.medium} alt={item.name}/>
         </div>

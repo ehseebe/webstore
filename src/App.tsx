@@ -123,7 +123,8 @@ const App = () => {
         />
       </SearchInputWrap>
       <GridMain id="page-content">
-        <GridWrap>{visibleProducts}</GridWrap>
+        <h2 id="list-title">Products</h2>
+        <GridWrap aria-labelledby="list-title">{visibleProducts}</GridWrap>
       </GridMain>
     </main>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import {   render, screen,
   cleanup,
   waitFor,
+  within,
   fireEvent,
   getByText,
   queryByText,
@@ -33,6 +34,13 @@ describe('Component Testing', () => {
   test('Load list of products', async () => {
     const fetchData = jest.fn(() => Promise.resolve());
     const props = { fetchData };
+    render(<App />)
+    const list = screen.getByRole("list", {
+      name: /products/i,
+    })
+    const { getAllByRole } = within(list)
+    const items = getAllByRole("product")
+    expect(items.length).toBe(26)
   });
 
   test('User keyword search shows relevant products', async () => {
@@ -42,18 +50,18 @@ describe('Component Testing', () => {
     getByDisplayValue('lemon')
   });
 
-  // test('Customer can add item to cart', async () => {
-  //   render(<App />)
+  test('Customer can add item to cart', async () => {
+    render(<App />)
 
-  //   // on addToCart button click
-  //   // item.id is in cart
+    // on addToCart button click
+    // item.id is in cart
 
-  // });
+  });
 
-  // test('Customer can remove item from cart', async () => {
-  //   render(<App />)
-  //   // on removeFromCart button click
-  //   // item.id is removed from cart
+  test('Customer can remove item from cart', async () => {
+    render(<App />)
+    // on removeFromCart button click
+    // item.id is removed from cart
 
-  // });
+  });
 })
