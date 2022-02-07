@@ -13,6 +13,7 @@ export interface Product {
   kind_subtype: string;
   kind: string;
   custom_product_type: string;
+  max_cart_quantity: number;
   name: string;
   percent_cbd: number;
   percent_cbda: number;
