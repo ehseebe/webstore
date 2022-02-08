@@ -14,7 +14,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
   const { name, photos, amount, sort_price, product_id, max_cart_quantity } =
     item;
   return (
-    <Wrapper>
+    <Wrapper data-testid="cart-item">
       <div className="cart-item__main">
         <h3>{name}</h3>
         <img src={photos[0].urls.small} alt={name} />
@@ -32,7 +32,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
           >
             -
           </Button>
-          <h4>{amount}</h4>
+          <h4 aria-label="amount">{amount}</h4>
           <Button
             aria-label="add one item"
             type="button"

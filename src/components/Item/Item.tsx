@@ -20,7 +20,7 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => {
         <h2 className="item__name">{name}</h2>
         <h3 className="item__price">${sort_price}</h3>
       </div>
-      <button className="item__button" onClick={() => handleAddToCart(item)}>
+      <button className="item__button" aria-label="add to cart" onClick={() => handleAddToCart(item)}>
         Add to Cart
       </button>
     </Wrapper>
