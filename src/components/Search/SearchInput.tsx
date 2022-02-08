@@ -1,6 +1,9 @@
-import PropTypes from 'prop-types';
+type Props = {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+};
 
-export default function SearchInput({searchQuery, setSearchQuery}) {
+const SearchInput: React.FC<Props> = ({searchQuery, setSearchQuery}) => {
 
   return (
     <form className="search__input" aria-label="Keyword/text search">
@@ -29,10 +32,4 @@ export default function SearchInput({searchQuery, setSearchQuery}) {
   );
 }
 
-SearchInput.propTypes = {
-  placeholder: PropTypes.string,
-};
-
-SearchInput.defaultProps = {
-  placeholder: '',
-};
+export default SearchInput;

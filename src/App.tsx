@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import SearchInput from "./components/Search/SearchInput";
 import Item from "./components/Item/Item";
 import Drawer from "@material-ui/core/Drawer";
-// import Grid from "@material-ui/core/Grid";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Badge from "@material-ui/core/Badge";
 import Cart from "./components/Cart/Cart";
@@ -53,7 +52,12 @@ const App = () => {
     }
 
     return productList.map((item) => (
-      <Item item={item} handleAddToCart={handleAddToCart} />
+      <Item
+        item={item}
+        handleAddToCart={handleAddToCart}
+        key={item.product_id}
+        data-testid="product"
+      />
     ));
   };
 
@@ -64,13 +68,18 @@ const App = () => {
         (item) => item.product_id === clickedItem.product_id
       );
 
-      // ! check that we don't go over max_amount
       if (isItemInCart) {
-        return prev.map((item) =>
-          item.product_id === clickedItem.product_id
+        // check that we don't go over max_amount
+        const checkItem = prev.map((item) => {
+          if (item.amount !== item.max_cart_quantity) {
+            return item.product_id === clickedItem.product_id
             ? { ...item, amount: item.amount + 1 }
-            : item
-        );
+            : item;
+          } else {
+            return item;
+          }
+        });
+        return checkItem;
       }
       // new cart item
       return [...prev, { ...clickedItem, amount: 1 }];
@@ -98,11 +107,11 @@ const App = () => {
   const getTotalItems = (items: Product[]) =>
     items.reduce((acc: number, item) => acc + item.amount, 0);
 
-    // checks if products exits & calls product render function
+  // checks if products exits & calls product render function
   const visibleProducts = products && renderedProducts();
 
   return (
-    <main className="main-grid">
+    <main className="main-grid" id="main">
       <Header />
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
@@ -123,7 +132,8 @@ const App = () => {
         />
       </SearchInputWrap>
       <GridMain id="page-content">
-        <GridWrap>{visibleProducts}</GridWrap>
+        <h1 id="list-title">Browse Products</h1>
+        <GridWrap aria-labelledby="list-title">{visibleProducts}</GridWrap>
       </GridMain>
     </main>
   );
