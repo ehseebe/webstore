@@ -2,6 +2,7 @@
 
 ## Mockup
 
+![mockup of webstore](/src/assets/webstore-mockup.jpeg)
 ## Requirements
 
 - ✅ Product data must be retrieved using the provided `fetchProducts` function located in `./src/client.ts`
@@ -11,6 +12,6 @@
 - ✅ The customer needs the ability to add a product to their cart
 - ✅ The customer needs the ability to remove a product from their cart
 - ✅ The application needs some level of test coverage. We will provide a script that covers which areas should be tested in `./src/App.test.tsx`
-- ❌ All tests written should pass when running `npm run test`
+- ✅ All tests written should pass when running `npm run test`
 - ✅ The application must be able to be served locally using `npm run start`
 
